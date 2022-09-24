@@ -6,7 +6,11 @@ const cors=require('cors')
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors())
+app.use(cors({
+    origin: '*',credentials: true,
+	allowedHeaders: ['Content-Type', 'Authorization', 'x-csrf-token'],
+	
+}))
 
 const productRoute=require('./routes/productRoute')
 const userRoute=require('./routes/userRoute')
