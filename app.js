@@ -6,10 +6,11 @@ const cors=require('cors')
 
 app.use(express.json());
 app.use(cookieParser());
+const allowedHosts = ['http://localhost:3000', 'http://127.0.0.1:3000'];//add any other address here
 app.use(cors({
-    origin: '*',credentials: true,
-	allowedHeaders: ['Content-Type', 'Authorization', 'x-csrf-token'],
-	
+    origin: allowedHosts,
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization', 'x-csrf-token'],
 }))
 
 const productRoute=require('./routes/productRoute')
